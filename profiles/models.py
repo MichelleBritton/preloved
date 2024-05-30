@@ -9,7 +9,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_p9bf83'
+        upload_to='images/', default='default_profile_p9bf83'
     )
 
     class Meta:
