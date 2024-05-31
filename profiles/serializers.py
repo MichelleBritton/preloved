@@ -2,8 +2,12 @@ from rest_framework import serializers
 from .models import Profile
 
 
-# Create a ProfileSerializer class and inherit from ModelSerializer and specify owner as a readonly field so it can't be edited
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Create a ProfileSerializer class 
+    Inherit from ModelSerializer and specify owner as a readonly field so it can't be edited
+    """
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()        
 
