@@ -25,7 +25,7 @@ class AdvertSerializer(serializers.ModelSerializer):
         allow_empty_file=True,
         use_url=True
     ) 
-    image_ = serializers.ImageField(
+    image_4 = serializers.ImageField(
         required=False,
         max_length=None,
         allow_empty_file=True,
