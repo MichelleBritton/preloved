@@ -18,6 +18,8 @@ class AdvertList(generics.ListCreateAPIView):
     search_fields = [
         "title",
         "description",
+        "location",
+        "category",
     ]
 
     def perform_create(self, serializer):
