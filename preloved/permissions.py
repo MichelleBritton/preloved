@@ -8,3 +8,9 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         # Otherwise we'll return True only if the user making the request owns the profile
         return obj.owner == request.user
+
+
+class IsOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):       
+        # Return True only if the user making the request owns the profile
+        return obj.owner == request.user

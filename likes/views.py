@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from preloved.permissions import IsOwnerOrReadOnly
+from preloved.permissions import IsOwner
 from likes.models import Like
 from likes.serializers import LikeSerializer
 
@@ -22,6 +22,6 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     """
     Like detail 
     """
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwner]
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
