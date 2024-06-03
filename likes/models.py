@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from adverts.models import Post
+from adverts.models import Advert
 
 
 class Like(models.Model):
