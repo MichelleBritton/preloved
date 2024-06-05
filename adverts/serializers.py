@@ -1,3 +1,5 @@
+
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from adverts.models import Advert
 
@@ -12,6 +14,8 @@ class AdvertSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()   
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')   
     profile_name = serializers.ReadOnlyField(source='owner.profile.first_name')    
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     image_2 = serializers.ImageField(
         required=False,
@@ -31,6 +35,12 @@ class AdvertSerializer(serializers.ModelSerializer):
         allow_empty_file=True,
         use_url=True
     ) 
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+    
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
 
     def validate_image_1(self, value):
         """
