@@ -13,10 +13,14 @@ class UserSerializer(serializers.ModelSerializer):
 class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer(read_only=True)
     advert = serializers.PrimaryKeyRelatedField(queryset=Advert.objects.all(), write_only=True)
+    conversation = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Message
         fields = ['id', 'conversation', 'sender', 'text', 'timestamp', 'advert']
+        extra_kwargs = {
+            'advert': {'write_only': True}
+        }
 
     def create(self, validated_data):
         advert = validated_data.pop('advert')
@@ -28,10 +32,8 @@ class MessageSerializer(serializers.ModelSerializer):
         if not conversation:
             conversation = Conversation.objects.create()
             conversation.participants.add(sender, recipient)
-
-        # Remove conversation and sender from validated_data if they exist
-        validated_data.pop('conversation', None)
-        validated_data.pop('sender', None)
+            # Include advert details in the initial message
+            validated_data['text'] = f"[Advert: {advert.title}] {validated_data['text']}"
 
         # Ensure the correct arguments are passed to Message.objects.create
         message = Message.objects.create(

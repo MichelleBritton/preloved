@@ -47,4 +47,4 @@ class MessageCreateView(generics.CreateAPIView):
         except Advert.DoesNotExist:
             raise NotFound("Advert not found")
 
-        serializer.save(sender=self.request.user, advert=advert)
+        serializer.save(advert=advert)
