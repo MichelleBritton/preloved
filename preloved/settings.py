@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'profiles',
     'adverts',
     'likes',
+    'user_messages',
 ]
 
 MIDDLEWARE = [
