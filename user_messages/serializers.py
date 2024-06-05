@@ -10,15 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username']
 
 
-class ConversationSerializer(serializers.ModelSerializer):
-    participants = UserSerializer(many=True, read_only=True)
-    messages = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
-    class Meta:
-        model = Conversation
-        fields = ['id', 'participants', 'created_at', 'messages']
-
-
 class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer(read_only=True)
     advert = serializers.PrimaryKeyRelatedField(queryset=Advert.objects.all(), write_only=True)
@@ -51,3 +42,12 @@ class MessageSerializer(serializers.ModelSerializer):
         )
 
         return message
+
+
+class ConversationSerializer(serializers.ModelSerializer):
+    participants = UserSerializer(many=True, read_only=True)
+    messages = MessageSerializer(many=True, read_only=True)  
+
+    class Meta:
+        model = Conversation
+        fields = ['id', 'participants', 'created_at', 'messages']
