@@ -1,7 +1,12 @@
+import React from "react";
+import styles from "./App.module.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <h1>test</h1>
+    <div className={styles.App}>
+      <NavBar />
+    </div>
   );
 }
 
