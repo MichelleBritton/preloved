@@ -4,3 +4,39 @@
     font-size: 1.4rem;
     min-height: 100vh;
 }
+
+.Main {
+    padding-top: 100px;
+}
+
+* {
+    box-sizing: border-box;
+}
+  
+a {
+    color: #cec7bf;
+    transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+    color: #07161b;
+    text-decoration: none;
+}
+
+a:hover i {
+    color: #07161b;
+    transition: color ease-in-out 0.3s;
+}
+
+i {
+    color: #cec7bf;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+}
+  
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #07161b;
+}
