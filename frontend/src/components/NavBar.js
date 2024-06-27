@@ -10,10 +10,13 @@ import {
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
 import { removeTokenTimestamp } from "../utils/utils";
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
     // Handle log out funcionality
     const handleSignOut = async () => {
@@ -26,6 +29,7 @@ const NavBar = () => {
         }
     };
 
+    // Sell icon variable to display when users are logged in
     const sellIcon = (
         <NavLink 
             className={styles.NavLink}
@@ -41,7 +45,7 @@ const NavBar = () => {
         <>
             <NavLink 
                 exact
-                className="ml-lg-2 ml-xl-4"
+                className={styles.NavLink}
                 activeClassName={styles.Active}
                 to={`/profiles/${currentUser?.profile_id}`}
             >
@@ -53,7 +57,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink      
-                className={`${styles.NavLink} ml-lg-2 ml-xl-4`} 
+                className={styles.NavLink}
                 to="/" 
                 onClick={handleSignOut}
             >
@@ -87,6 +91,7 @@ const NavBar = () => {
 
   return (
     <Navbar 
+        expanded={expanded}
         className={styles.NavBar} 
         expand="lg"
         fixed="top"
@@ -98,7 +103,11 @@ const NavBar = () => {
                 </Navbar.Brand>
             </NavLink>
             
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle
+                ref={ref}
+                onClick={() => setExpanded(!expanded)} 
+                aria-controls="basic-navbar-nav" 
+            />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto text-left">
                     <NavLink 
