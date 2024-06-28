@@ -46,7 +46,7 @@ const SignUpForm = () => {
         <Row className={styles.Row}>
             <Col className="my-auto mx-auto" md={6}>
                 <Container className={`${appStyles.Content}`}>
-                    <h1 className={styles.Header}>sign up</h1>
+                    <h1 className={styles.Header}>Sign up</h1>
 
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
@@ -95,7 +95,7 @@ const SignUpForm = () => {
                         )}
             
                         <Button 
-                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} 
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Blue}`} 
                             type="submit"
                         >
                             Sign up 
@@ -105,7 +105,7 @@ const SignUpForm = () => {
                         <Alert variant="warning" key={idx} className="mt-3">{message}</Alert>
                     )}
                 </Container>
-                <Container className={`mt-3 ${appStyles.Content}`}>
+                <Container className={`mt-3 ${appStyles.ContentDark}`}>
                     <Link className={styles.Link} to="/login">
                         Already have an account? <span>Login</span>
                     </Link>

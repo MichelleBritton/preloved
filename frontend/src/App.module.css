@@ -9,10 +9,26 @@
     padding-top: 100px;
 }
 
+.Content {
+    background: #cec7bf;
+    border: 2px solid #07161b;
+    border-radius: 20px;
+    padding: 20px;
+    white-space: pre-line;
+}
+
+.ContentDark {
+    background: #07161b;
+    border: 2px solid #cec7bf;
+    border-radius: 20px;
+    padding: 20px;
+    white-space: pre-line;
+}
+
 * {
     box-sizing: border-box;
 }
-  
+
 a {
     color: #cec7bf;
     transition: color ease-in-out 0.3s;
@@ -20,6 +36,16 @@ a {
 
 a:hover {
     color: #07161b;
+    text-decoration: none;
+}
+
+.ContentDark a {
+    color: #cec7bf;
+    transition: color ease-in-out 0.3s;
+}
+
+.ContentDark a:hover {
+    color: #3f7381;
     text-decoration: none;
 }
 
