@@ -8,14 +8,12 @@ const Logo = () => {
     const {logoRef} = useScrollHandler(styles);
 
     return (
-        <div className={`${styles.LogoContainer} mb-4`}>
-            <img 
-                className={styles.Logo} 
-                src={LogoImg} 
-                ref={logoRef}
-                alt="Preloved Canine Clobber Logo" 
-            />
-        </div> 
+        <img 
+            className={styles.Logo} 
+            src={LogoImg} 
+            ref={logoRef}
+            alt="Preloved Canine Clobber Logo" 
+        />        
     );
 };
 

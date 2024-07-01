@@ -9,7 +9,7 @@
     font: normal 1.8rem "Delius Swash Caps", cursive;  
     opacity: 0;
     padding: 0 !important;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .Brand i {

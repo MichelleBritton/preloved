@@ -7,7 +7,7 @@ export const useScrollHandler = (styles) => {
     useEffect(() => {
         const handleScroll = () => {
             let scrollPos = window.scrollY;
-            if (scrollPos > 400) {
+            if (scrollPos > 100) {
                 if (logoRef.current) logoRef.current.classList.add(styles.Shrink);
                 if (navBarLogoRef.current) navBarLogoRef.current.classList.add(styles.Visible);
             } else {
