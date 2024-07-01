@@ -1,0 +1,9 @@
+.LogoContainer {
+    height: auto;
+}
+
+.Logo {
+    min-height: 125px;
+    object-fit: cover;
+    width: 100%;
+}
