@@ -11,10 +11,13 @@ import {
 import axios from "axios";
 import { removeTokenTimestamp } from "../utils/utils";
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import useScrollHandler from '../hooks/useScrollHandler';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    const {navBarLogoRef} = useScrollHandler(styles);
 
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
@@ -98,8 +101,11 @@ const NavBar = () => {
     >
         <Container fluid>
             <NavLink to="/">
-                <Navbar.Brand>
-                    Preloved Canine Clobber
+                <Navbar.Brand 
+                    className={styles.Brand}
+                    ref={navBarLogoRef}
+                >
+                    <i className="fa-solid fa-paw mb-2"></i> Preloved Canine Clobber
                 </Navbar.Brand>
             </NavLink>
             

@@ -4,6 +4,29 @@
     box-shadow: 0px 5px 15px -4px rgba(0,0,0,0.9);       
 }
 
+.Brand {
+    color: #cec7bf !important;
+    font: normal 1.8rem "Delius Swash Caps", cursive;  
+    opacity: 0;
+    padding: 0 !important;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, color 0.3s ease-in-out;
+}
+
+.Brand i {
+    font-size: 2rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.Brand:hover,
+.Brand i:hover {
+    color: #07161b !important;
+}
+
+.Visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
 .NavLink {
     padding: 5px;
 }
