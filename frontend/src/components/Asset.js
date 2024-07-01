@@ -9,6 +9,7 @@ import styles from "../styles/Asset.module.css";
 const Asset = ({ spinner, src, message }) => {
     return (
         <div className={`${styles.Asset} p-4`}>
+            {/* Check if prop exists and if it does, render the appropriate element */}
             {spinner && <Spinner animation="border" />}
             {src && <img src={src} alt={message} className={styles.Image} />}
             {message && <p className="mt-4">{message}</p>}

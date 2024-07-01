@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import Logo from "./components/Logo";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
+import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 
 function App() {  
   return (
@@ -17,7 +18,7 @@ function App() {
       <Container fluid className={styles.Main}>        
         <Switch>
           <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route exact path="/sell" render={() => <h1>Sell</h1>} />
+          <Route exact path="/adverts/create" render={() => <AdvertCreateForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/login" render={() => <LoginForm />} />
           <Route render={()=> <p>Page not found</p>} />
