@@ -55,8 +55,8 @@ function LoginForm() {
     return (
         <Row className={styles.Row}>
             <Col className="my-auto mx-auto" md={6}>
-                <Container className={`${appStyles.Content} p-4 `}>
-                    <h1 className={styles.Header}>login</h1>
+                <Container className={`${appStyles.Content}`}>
+                    <h1 className={styles.Header}>Login</h1>
                     
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="username">
@@ -94,7 +94,7 @@ function LoginForm() {
                         ))}
                         
                         <Button
-                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Blue}`}
                             type="submit"
                         >
                             Login
@@ -106,7 +106,7 @@ function LoginForm() {
                         ))}
                     </Form>
                 </Container>
-                <Container className={`mt-3 ${appStyles.Content}`}>
+                <Container className={`mt-3 ${appStyles.ContentDark}`}>
                     <Link className={styles.Link} to="/signup">
                         Don't have an account? <span>Sign up now!</span>
                     </Link>
