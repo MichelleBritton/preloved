@@ -1,7 +1,3 @@
-.Row {
-  height: calc(100vh - 81px);
-}
-
 .Input {
   background: #fff;
   box-sizing: border-box;
