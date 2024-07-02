@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
@@ -88,9 +86,9 @@ function AdvertCreateForm() {
     };
 
     const textFields = (
-        <div className="text-center">
+        <div>
             <Form.Group controlId="title">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Title *</Form.Label>
                 <Form.Control
                     type="text"
                     name="title"
@@ -105,7 +103,7 @@ function AdvertCreateForm() {
             ))}
 
             <Form.Group controlId="description">
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Description *</Form.Label>
                 <Form.Control
                     as="textarea"
                     rows={6}
@@ -121,7 +119,7 @@ function AdvertCreateForm() {
             ))}
 
             <Form.Group controlId="price">
-                <Form.Label>Price</Form.Label>
+                <Form.Label>Price *</Form.Label>
                 <Form.Control
                     type="text"
                     name="price"
@@ -136,7 +134,7 @@ function AdvertCreateForm() {
             ))}
 
             <Form.Group controlId="location">
-                <Form.Label>Location</Form.Label>
+                <Form.Label>Location *</Form.Label>
                 <Form.Control
                     type="text"
                     name="location"
@@ -151,7 +149,7 @@ function AdvertCreateForm() {
             ))}
 
             <Form.Group controlId="category">
-                <Form.Label>Category</Form.Label>
+                <Form.Label>Category *</Form.Label>
                 <Form.Control
                     type="text"
                     name="category"
@@ -166,7 +164,7 @@ function AdvertCreateForm() {
             ))}
 
             <Form.Group controlId="deliver">
-                <Form.Label>Deliver</Form.Label>
+                <Form.Label>Deliver *</Form.Label>
                 <Form.Control
                     type="text"
                     name="deliver"
@@ -190,173 +188,176 @@ function AdvertCreateForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 type="submit"
             >
-                Create
+                Create Advert
             </Button>
         </div>
     );
     return (
-        <Form onSubmit={handleSubmit}>
-            <Row>
-                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-                    <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-                    >
-                        <Form.Group className="text-center">
-                            {image_1 ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={URL.createObjectURL(image_1)} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                                            htmlFor="image-upload-1"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload-1"
-                                >
-                                    <Asset
-                                        src={Upload}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-                            <Form.File
-                                id="image-upload-1"
-                                accept="image/*"
-                                onChange={handleChangeImage(1)}
-                                ref={imageRefs[0]}
-                            />
-                            {errors.image_1?.map((message, idx) => (
-                                <Alert key={idx} variant="warning">
-                                    {message}
-                                </Alert>
-                            ))}
-
-                            {image_2 ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={URL.createObjectURL(image_2)} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                                            htmlFor="image-upload-2"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload-2"
-                                >
-                                    <Asset
-                                        src={Upload}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-                            <Form.File
-                                id="image-upload-2"
-                                accept="image/*"
-                                onChange={handleChangeImage(2)}
-                                ref={imageRefs[1]}
-                            />
-                            {errors.image_2?.map((message, idx) => (
-                                <Alert key={idx} variant="warning">
-                                    {message}
-                                </Alert>
-                            ))}
-
-                            {image_3 ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={URL.createObjectURL(image_3)} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                                            htmlFor="image-upload-3"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload-3"
-                                >
-                                    <Asset
-                                        src={Upload}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-                            <Form.File
-                                id="image-upload-3"
-                                accept="image/*"
-                                onChange={handleChangeImage(3)}
-                                ref={imageRefs[2]}
-                            />
-                            {errors.image_3?.map((message, idx) => (
-                                <Alert key={idx} variant="warning">
-                                    {message}
-                                </Alert>
-                            ))}
-
-                            {image_4 ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={URL.createObjectURL(image_4)} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                                            htmlFor="image-upload-4"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload-4"
-                                >
-                                    <Asset
-                                        src={Upload}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-                            <Form.File
-                                id="image-upload-4"
-                                accept="image/*"
-                                onChange={handleChangeImage(4)}
-                                ref={imageRefs[3]}
-                            />
-                            {errors.image_4?.map((message, idx) => (
-                                <Alert key={idx} variant="warning">
-                                    {message}
-                                </Alert>
-                            ))}
-                        </Form.Group>
-                        <div className="d-md-none">{textFields}</div>
-                    </Container>
-                </Col>
-                <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-                    <Container className={appStyles.Content}>{textFields}</Container>
-                </Col>
-            </Row>
+        <Form onSubmit={handleSubmit}>            
+            <Container
+                className={`${appStyles.Content} ${styles.Container} mb-5`}
+            >      
+                <h1 className="text-center mb-4">Create your advert</h1>  
+                <h2>Photos (You can add up to 4 photos)</h2>        
+                <Form.Group className={`${styles.FormGroup} p-3 d-flex flex-row flex-wrap justify-content-between align-items-center text-center`}>
+                    <div className={styles.ImgGroup}>                        
+                        {image_1 ? (
+                            <>
+                                <figure>
+                                    <Image className={styles.Image} src={URL.createObjectURL(image_1)} rounded />
+                                </figure>
+                                <div>
+                                    <Form.Label
+                                        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                                        htmlFor="image-upload-1"
+                                    >
+                                        Change the image
+                                    </Form.Label>
+                                </div>
+                            </>
+                        ) : (
+                            <Form.Label
+                                className="d-flex justify-content-center"
+                                htmlFor="image-upload-1"
+                            >
+                                <Asset
+                                    src={Upload}
+                                    message="Click or tap to upload an image"
+                                />
+                            </Form.Label>
+                        )}
+                        <Form.File
+                            id="image-upload-1"
+                            accept="image/*"
+                            onChange={handleChangeImage(1)}
+                            ref={imageRefs[0]}
+                        />
+                        {errors.image_1?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                    </div>
+                    
+                    <div className={styles.ImgGroup}>
+                        {image_2 ? (
+                            <>
+                                <figure>
+                                    <Image className={styles.Image} src={URL.createObjectURL(image_2)} rounded />
+                                </figure>
+                                <div>
+                                    <Form.Label
+                                        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                                        htmlFor="image-upload-2"
+                                    >
+                                        Change the image
+                                    </Form.Label>
+                                </div>
+                            </>
+                        ) : (
+                            <Form.Label
+                                className="d-flex justify-content-center"
+                                htmlFor="image-upload-2"
+                            >
+                                <Asset
+                                    src={Upload}
+                                    message="Click or tap to upload an image"
+                                />
+                            </Form.Label>
+                        )}
+                        <Form.File
+                            id="image-upload-2"
+                            accept="image/*"
+                            onChange={handleChangeImage(2)}
+                            ref={imageRefs[1]}
+                        />
+                        {errors.image_2?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                    </div>
+                    
+                    <div className={styles.ImgGroup}>
+                        {image_3 ? (
+                            <>
+                                <figure>
+                                    <Image className={styles.Image} src={URL.createObjectURL(image_3)} rounded />
+                                </figure>
+                                <div>
+                                    <Form.Label
+                                        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                                        htmlFor="image-upload-3"
+                                    >
+                                        Change the image
+                                    </Form.Label>
+                                </div>
+                            </>
+                        ) : (
+                            <Form.Label
+                                className="d-flex justify-content-center"
+                                htmlFor="image-upload-3"
+                            >
+                                <Asset
+                                    src={Upload}
+                                    message="Click or tap to upload an image"
+                                />
+                            </Form.Label>
+                        )}
+                        <Form.File
+                            id="image-upload-3"
+                            accept="image/*"
+                            onChange={handleChangeImage(3)}
+                            ref={imageRefs[2]}
+                        />
+                        {errors.image_3?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                    </div>
+                    
+                    <div className={styles.ImgGroup}>
+                        {image_4 ? (
+                            <>
+                                <figure>
+                                    <Image className={styles.Image} src={URL.createObjectURL(image_4)} rounded />
+                                </figure>
+                                <div>
+                                    <Form.Label
+                                        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+                                        htmlFor="image-upload-4"
+                                    >
+                                        Change the image
+                                    </Form.Label>
+                                </div>
+                            </>
+                        ) : (
+                            <Form.Label
+                                className="d-flex justify-content-center"
+                                htmlFor="image-upload-4"
+                            >
+                                <Asset
+                                    src={Upload}
+                                    message="Click or tap to upload an image"
+                                />
+                            </Form.Label>
+                        )}
+                        <Form.File
+                            id="image-upload-4"
+                            accept="image/*"
+                            onChange={handleChangeImage(4)}
+                            ref={imageRefs[3]}
+                        />
+                        {errors.image_4?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                        ))}
+                    </div>                        
+                </Form.Group>
+                <div>{textFields}</div>
+            </Container>
         </Form>
     );
 }

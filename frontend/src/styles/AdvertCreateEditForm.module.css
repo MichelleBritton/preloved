@@ -1,3 +1,29 @@
-.Container {
-    min-height: 343px;
+.FormGroup {
+  border: 2px solid #3f7381;
+  border-radius: 20px;
+}
+
+.ImgGroup { 
+  flex-basis: 48%;
+  height: 310px;
+  margin-bottom: 30px;
+}
+
+@media only screen and (min-width:1024px) {	
+  .ImgGroup {
+      flex-basis: 23%;
   }
+}
+
+@media only screen and (min-width:1200px) {	
+  .ImgGroup {
+      margin-bottom: 0;
+  }
+}
+
+.Image {
+  height: 250px;
+  max-height: 250px;
+  object-fit: contain;
+  width: 100%;
+}

@@ -26,6 +26,12 @@
     white-space: pre-line;
 }
 
+.Content h1 {
+    color: #3f7381;
+    font: normal 2.6rem "Delius Swash Caps", cursive;  
+    line-height: 4rem;
+}
+
 .ContentDark {
     background: #07161b;
     border: 2px solid #cec7bf;
