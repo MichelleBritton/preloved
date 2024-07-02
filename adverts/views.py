@@ -25,7 +25,7 @@ class AdvertList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
+    
 class AdvertDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, edit and delete an advert
