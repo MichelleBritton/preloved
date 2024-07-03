@@ -2,6 +2,7 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from adverts.models import Advert
+from likes.models import Like
 
 
 class AdvertSerializer(serializers.ModelSerializer):
@@ -17,6 +18,7 @@ class AdvertSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    like_id = serializers.SerializerMethodField()
     image_2 = serializers.ImageField(
         required=False,
         max_length=None,
@@ -130,11 +132,20 @@ class AdvertSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_like_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            like = Like.objects.filter(
+                owner=user, advert=obj
+            ).first()
+            return like.id if like else None
+        return None
+
     class Meta:
         model = Advert
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title',
             'description', 'location', 'price', 'category',
             'deliver', 'image_1', 'image_2', 'image_3', 'image_4',
-            'is_owner', 'profile_id', 'profile_name', 'profile_image',
+            'is_owner', 'profile_id', 'profile_name', 'profile_image', 'like_id'
         ]
