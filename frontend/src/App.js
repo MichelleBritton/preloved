@@ -7,6 +7,7 @@ import Logo from "./components/Logo";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
 import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
+import AdvertPage from "./pages/adverts/AdvertPage";
 
 function App() {  
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/adverts/create" render={() => <AdvertCreateForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/login" render={() => <LoginForm />} />
+          <Route exact path="/adverts/:id" render={() => <AdvertPage />} />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>
