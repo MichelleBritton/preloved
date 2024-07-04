@@ -78,7 +78,6 @@ function AdvertCreateForm() {
             const {data} = await axiosReq.post('/adverts/', formData);
             history.push(`/adverts/${data.id}`);
         } catch (err) {
-            //console.error('Error submitting form:', err);
             if (err.response?.status !== 401){
                 setErrors(err.response?.data);
             }

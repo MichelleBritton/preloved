@@ -9,6 +9,7 @@ import LoginForm from "./pages/auth/LoginForm";
 import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
+import AdvertEditForm from "./pages/adverts/AdvertEditForm";
 
 function App() {  
   return (
@@ -19,11 +20,36 @@ function App() {
       </Container>
       <Container fluid className={styles.Main}>        
         <Switch>
-          <Route exact path="/" render={() => <AdvertsPage message="No results found. Adjust the search keyword." />} />
-          <Route exact path="/adverts/create" render={() => <AdvertCreateForm />} />
-          <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/login" render={() => <LoginForm />} />
-          <Route exact path="/adverts/:id" render={() => <AdvertPage />} />
+          <Route 
+            exact 
+            path="/" 
+            render={() => <AdvertsPage message="No results found. Adjust the search keyword." />} 
+          />
+          <Route 
+            exact 
+            path="/adverts/create" 
+            render={() => <AdvertCreateForm />} 
+          />
+          <Route 
+            exact 
+            path="/adverts/:id/edit" 
+            render={() => <AdvertEditForm />} 
+          />
+          <Route 
+            exact 
+            path="/signup" 
+            render={() => <SignUpForm />} 
+          />
+          <Route 
+            exact 
+            path="/login" 
+            render={() => <LoginForm />} 
+          />
+          <Route 
+            exact 
+            path="/adverts/:id" 
+            render={() => <AdvertPage />} 
+          />
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>

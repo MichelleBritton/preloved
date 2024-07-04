@@ -106,15 +106,20 @@ const Advert = (props) => {
                 </Media>
             </Card.Body>
             <Link to={`/adverts/${id}`}>
-                <Card.Img src={image_1} alt={title} />
+                <Card.Img src={image_1} alt={title} />                
             </Link>
             <Card.Body>
+                <Card.Img src={image_2} alt={title} />
+                <Card.Img src={image_3} alt={title} />
+                <Card.Img src={image_4} alt={title} />
+            </Card.Body>
+            <Card.Body>
                 {/* Check if these props have been passed before rendering the components */}
-                {title && <Card.Title><h1>{title}</h1></Card.Title>}
-                {location && <Card.Text><p>{location}</p></Card.Text>}
-                {price && <Card.Text><p>£{price}</p></Card.Text>}
-                {description && <Card.Text><h3>Description</h3>{description}</Card.Text>}
-                {deliver && <Card.Text><p>{deliver}</p></Card.Text>}
+                {title && <Card.Title>{title}</Card.Title>}
+                {location && <Card.Text>{location}</Card.Text>}
+                {price && <Card.Text>{price}</Card.Text>}
+                {description && <Card.Text>Description{description}</Card.Text>}
+                {deliver && <Card.Text>{deliver}</Card.Text>}
                 <div className={styles.PostBar}>
                     {/* Check if current user owns the advert */}
                     {is_owner ? (
