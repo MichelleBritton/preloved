@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -8,6 +8,7 @@ import Avatar from '../../components/Avatar';
 import styles from "../../styles/Advert.module.css";
 import { Tooltip } from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 
 const Advert = (props) => {
     // Destructure the props from advert results, passed from parent component
@@ -35,6 +36,22 @@ const Advert = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+    const history = useHistory();
+
+    // Direct to edit advert page
+    const handleEdit = () => {
+        history.push(`/adverts/${id}/edit`);
+    };
+
+    // Handle advert deletion
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/adverts/${id}/`);
+            history.push('/');
+        } catch (err) {
+            // console.log(err);
+        }
+    };
 
     const handleLike = async () => {
         try {
@@ -78,8 +95,13 @@ const Advert = (props) => {
                     </Link>
                     <div className='d-flex align-items-center'>
                         <span>{created_at}</span>
-                        {/* Check if the logged in user is the owner and if the PostPage prop exists */}
-                        {is_owner && postPage && "..."}
+                        {/* Check if the logged in user is the owner and if the PostPage prop exists and show the dropdown menu */}
+                        {is_owner && postPage && (
+                            <MoreDropdown
+                                handleEdit={handleEdit}
+                                handleDelete={handleDelete}
+                            />
+                        )}
                     </div>
                 </Media>
             </Card.Body>
