@@ -27,6 +27,7 @@ const Advert = (props) => {
         profile_id,
         profile_image,
         updated_at,
+        created_at,
         like_id,
         postPage,
         setAdverts,
@@ -76,7 +77,7 @@ const Advert = (props) => {
                         {owner}
                     </Link>
                     <div className='d-flex align-items-center'>
-                        <span>{updated_at}</span>
+                        <span>{created_at}</span>
                         {/* Check if the logged in user is the owner and if the PostPage prop exists */}
                         {is_owner && postPage && "..."}
                     </div>
@@ -87,8 +88,11 @@ const Advert = (props) => {
             </Link>
             <Card.Body>
                 {/* Check if these props have been passed before rendering the components */}
-                {title && <Card.Title className='text-center'>{title}</Card.Title>}
-                {description && <Card.Text>{description}</Card.Text>}
+                {title && <Card.Title><h1>{title}</h1></Card.Title>}
+                {location && <Card.Text><p>{location}</p></Card.Text>}
+                {price && <Card.Text><p>£{price}</p></Card.Text>}
+                {description && <Card.Text><h3>Description</h3>{description}</Card.Text>}
+                {deliver && <Card.Text><p>{deliver}</p></Card.Text>}
                 <div className={styles.PostBar}>
                     {/* Check if current user owns the advert */}
                     {is_owner ? (
