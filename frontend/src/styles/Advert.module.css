@@ -1,5 +1,6 @@
 .Advert {
     background: #3f7381;
+    color: #cfced3;
     border: 2px solid #07161b;
     border-radius: 20px;
     white-space: pre-line;
@@ -12,5 +13,10 @@
     padding: 0 !important;
 }
 .CardTitle {
-    font-size: 28px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.Heart {
+    color: #f85032;
 }

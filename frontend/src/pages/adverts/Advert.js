@@ -68,16 +68,16 @@ const Advert = (props) => {
             </Card.Body>
             <Card.Body>
                 {/* Check if these props have been passed before rendering the components */}
-                {title && <Card.Title>{title}</Card.Title>}
-                {price && <Card.Text>£{price}</Card.Text>}
-                {location && <Card.Text>{location}</Card.Text>}
+                {title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
+                {price && <Card.Text className="mb-0">£{price}</Card.Text>}
+                {location && <Card.Text className="mb-0">{location}</Card.Text>}
                 Posted {updated_at}
                 
                 <div className={styles.PostBar}>
                     {/* Check if current user owns the advert */}
                     {is_owner ? (
                         <OverlayTrigger placement="top" overlay={<Tooltip>You can't like your own advert</Tooltip>}>
-                            <i className='far fa-heart' />
+                            <i className='far fa-heart mr-auto' />
                         </OverlayTrigger>
                     // Check if a like ID exists, if so the user has already liked a post 
                     ) : like_id ? (
@@ -87,7 +87,7 @@ const Advert = (props) => {
                     // Check if user is logged in, if so they can like the advert
                     ) : currentUser ? (
                         <span onClick={handleLike}>
-                            <i className={`far fa-heart ${styles.HeartOutline}`} />
+                            <i className='far fa-heart' />
                         </span>
                     // Display the icon for users not logged in
                     ) : (
