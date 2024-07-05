@@ -1,4 +1,10 @@
-.CardBody {
+.Advert {
+    background: #3f7381;
+    border: 2px solid #07161b;
+    border-radius: 20px;
+    white-space: pre-line;
+}
+.CardBody { 
     margin-top: 20px;
     padding: 0 !important;
 }

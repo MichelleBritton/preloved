@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Advert from "./Advert";
+import Avatar from "../../components/Avatar";
+import { Col, Container, Row } from "react-bootstrap";
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import Asset from "../../components/Asset";
+import appStyles from "../../App.module.css";
 
 function AdvertPage() {
     // Fetch data about the advert with the id that is contained within the url 
@@ -25,12 +32,57 @@ function AdvertPage() {
         handleMount();
     }, [id]);
 
+    const advertData = advert.results[0];
+
+    const currentUser = useCurrentUser();
+    const is_owner = currentUser?.username === advertData?.owner;
+    const history = useHistory();
+
+    // Direct to edit advert page
+    const handleEdit = () => {
+        history.push(`/adverts/${id}/edit`);
+    };
+
+    // Handle advert deletion
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/adverts/${id}/`);
+            history.push('/');
+        } catch (err) {
+            // console.log(err);
+        }
+    };
+
+    if (!advertData) {
+        return <Container className={appStyles.Content}>
+                    <Asset spinner />
+                </Container>
+    }
 
     return (
-        <>
-            {/* SetAdverts for likes functionality */}
-            <Advert {...advert.results[0]} setAdverts={setAdvert} postPage />
-        </>            
+        <Container>
+            <Row>
+                <Col>
+                    {/* SetAdverts for likes functionality */}
+                    <Advert {...advert.results[0]} setAdverts={setAdvert} advertPage />
+                </Col>
+                <Col>
+                    <Link to={`/profiles/${advertData.profile_id}`}>
+                        <Avatar src={advertData.profile_image} height={55} />
+                        {advertData.owner}
+                    </Link>
+                    <div className='d-flex align-items-center'>
+                        {/* Check if the logged in user is the owner and show the dropdown menu */}
+                        {is_owner && (
+                            <MoreDropdown
+                                handleEdit={handleEdit}
+                                handleDelete={handleDelete}
+                            />
+                        )}
+                    </div>
+                </Col>
+            </Row>
+        </Container>        
     );
 }
 
