@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
+
+import appStyles from "../../App.module.css";
+
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+
 import { axiosReq } from "../../api/axiosDefaults";
+import { axiosRes } from '../../api/axiosDefaults';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Advert from "./Advert";
 import Avatar from "../../components/Avatar";
-import { Col, Container, Row } from "react-bootstrap";
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
 import Asset from "../../components/Asset";
-import appStyles from "../../App.module.css";
+import { MoreDropdown } from '../../components/MoreDropdown';
 
 function AdvertPage() {
     // Fetch data about the advert with the id that is contained within the url 

@@ -4,8 +4,11 @@
     border-radius: 20px;
     white-space: pre-line;
 }
+.Img {
+    border-bottom: 2px solid #07161b;
+    border-radius: 20px 20px 0 0;
+}
 .CardBody { 
-    margin-top: 20px;
     padding: 0 !important;
 }
 .CardTitle {

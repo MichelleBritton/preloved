@@ -61,9 +61,9 @@ const Advert = (props) => {
 
     return (
         <Card className={styles.Advert}>
-            <Card.Body>
+            <Card.Body className={styles.CardBody}>
                 <Link to={`/adverts/${id}`}>
-                    <Card.Img src={image_1} alt={title} />                
+                    <Card.Img src={image_1} alt={title} className={styles.Img} />                
                 </Link>                
             </Card.Body>
             <Card.Body>

@@ -1,0 +1,18 @@
+// Define custom container mixin
+@mixin custom-container($margin-x: 10%) {
+  width: 80%;
+  padding-top: 40px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin-right: $margin-x;
+  margin-left: $margin-x;
+  margin-bottom: 20px;
+}
+
+// Apply custom container styles
+.custom-container {
+  @include custom-container();
+}
+
+
