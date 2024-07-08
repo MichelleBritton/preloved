@@ -6,6 +6,7 @@ import appStyles from "../../App.module.css";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Media from "react-bootstrap/Media";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { axiosRes } from '../../api/axiosDefaults';
@@ -77,19 +78,21 @@ function AdvertPage() {
                 </Col>
                 <Col className="ml-auto" lg={5} xl={4}>
                     <div className={appStyles.ContentDark}>
-                        <Link to={`/profiles/${advertData.profile_id}`}>
-                            <Avatar src={advertData.profile_image} height={55} />
-                            {advertData.owner}
-                        </Link>
-                        <div className='d-flex align-items-center'>
-                            {/* Check if the logged in user is the owner and show the dropdown menu */}
-                            {is_owner && (
-                                <MoreDropdown
-                                    handleEdit={handleEdit}
-                                    handleDelete={handleDelete}
-                                />
-                            )}
-                        </div>
+                        <Media className="d-flex align-items-center justify-content-between"> 
+                            <Link to={`/profiles/${advertData.profile_id}`}>
+                                <Avatar src={advertData.profile_image} height={55} />
+                                {advertData.owner}
+                            </Link>
+                            <div className='d-flex align-items-center'>
+                                {/* Check if the logged in user is the owner and show the dropdown menu */}
+                                {is_owner && (
+                                    <MoreDropdown
+                                        handleEdit={handleEdit}
+                                        handleDelete={handleDelete}
+                                    />
+                                )}
+                            </div>
+                        </Media>
                     </div>
                 </Col>
             </Row>
