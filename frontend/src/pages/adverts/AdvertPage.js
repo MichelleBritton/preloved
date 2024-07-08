@@ -14,6 +14,7 @@ import Advert from "./Advert";
 import Avatar from "../../components/Avatar";
 import Asset from "../../components/Asset";
 import { MoreDropdown } from '../../components/MoreDropdown';
+import BackButton from "../../components/BackButton";
 
 function AdvertPage() {
     // Fetch data about the advert with the id that is contained within the url 
@@ -68,6 +69,7 @@ function AdvertPage() {
 
     return (
         <Container fluid className={`${appStyles.Content} custom-container`}>
+            <BackButton />
             <Row>
                 <Col className="mr-auto mb-5 lg-mb-0" lg={7} xl={8}>
                     {/* SetAdverts for likes functionality */}
