@@ -21,6 +21,7 @@ const Advert = (props) => {
         price,
         description,
         category,
+        deliver,
         image_1,
         image_2,
         image_3,
@@ -104,6 +105,7 @@ const Advert = (props) => {
                 {advertPage && description && <Card.Text className='mb-0'><strong>Description: </strong>{description}</Card.Text>}
                 {price && <Card.Text className="mb-0"><strong>Price: </strong>£{price}</Card.Text>}
                 {location && <Card.Text className="mb-0"><strong>Location: </strong>{location}</Card.Text>}
+                {deliver && <Card.Text className="mb-0"><strong>Delivery Method: </strong>{deliver}</Card.Text>}
                 <strong>Posted: </strong>{updated_at}
                 
                 <div className={styles.PostBar}>
