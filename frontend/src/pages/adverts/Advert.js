@@ -88,7 +88,7 @@ const Advert = (props) => {
                 {advertPage && 
                     <>
                         <Card.Img src={mainImage} alt={title} className={`${styles.MainImg} ${styles.Img}`} />
-                        <div className={`${appStyles.Content} ${styles.Thumbnails} d-flex justify-content-between`}>
+                        <div className={`${appStyles.Content} ${styles.Thumbnails} d-flex justify-content-between mb-5`}>
                             <Card.Img src={image_1} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_1)} />
                             <Card.Img src={image_2} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_2)} />
                             <Card.Img src={image_3} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_3)} />
