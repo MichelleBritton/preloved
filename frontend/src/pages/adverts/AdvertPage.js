@@ -69,23 +69,25 @@ function AdvertPage() {
     return (
         <Container fluid className={`${appStyles.Content} custom-container`}>
             <Row>
-                <Col className="mr-auto mb-5 md-mb-0" md={7} lg={8}>
+                <Col className="mr-auto mb-5 lg-mb-0" lg={7} xl={8}>
                     {/* SetAdverts for likes functionality */}
                     <Advert {...advert.results[0]} setAdverts={setAdvert} advertPage />
                 </Col>
-                <Col className="ml-auto" md={5} lg={3}>
-                    <Link to={`/profiles/${advertData.profile_id}`}>
-                        <Avatar src={advertData.profile_image} height={55} />
-                        {advertData.owner}
-                    </Link>
-                    <div className='d-flex align-items-center'>
-                        {/* Check if the logged in user is the owner and show the dropdown menu */}
-                        {is_owner && (
-                            <MoreDropdown
-                                handleEdit={handleEdit}
-                                handleDelete={handleDelete}
-                            />
-                        )}
+                <Col className="ml-auto" lg={5} xl={4}>
+                    <div className={appStyles.ContentDark}>
+                        <Link to={`/profiles/${advertData.profile_id}`}>
+                            <Avatar src={advertData.profile_image} height={55} />
+                            {advertData.owner}
+                        </Link>
+                        <div className='d-flex align-items-center'>
+                            {/* Check if the logged in user is the owner and show the dropdown menu */}
+                            {is_owner && (
+                                <MoreDropdown
+                                    handleEdit={handleEdit}
+                                    handleDelete={handleDelete}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Col>
             </Row>
