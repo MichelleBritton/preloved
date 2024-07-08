@@ -44,6 +44,11 @@
     white-space: pre-line;
 }
 
+.ContentDark h2 {
+    color: #cec7bf;
+    font: normal 2rem "Delius Swash Caps", cursive;  
+}
+
 * {
     box-sizing: border-box;
 }
