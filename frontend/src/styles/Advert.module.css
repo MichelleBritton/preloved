@@ -16,7 +16,21 @@
     font-size: 1.6rem;
     font-weight: bold;
 }
-
 .Heart {
     color: #f85032;
+}
+.MainImg {
+    border: 2px solid #07161b;
+    height: auto;
+    width: 100%;
+}
+.Thumbnails {
+    border-top: 0;
+    border-radius: 0 0 20px 20px;
+}
+.Thumbnail {
+    border: 2px solid #07161b;
+    height: auto;
+    object-fit: cover;
+    width: 24%;
 }

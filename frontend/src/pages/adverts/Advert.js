@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Advert.module.css";
 
 import Card from 'react-bootstrap/Card';
@@ -18,15 +19,21 @@ const Advert = (props) => {
         title,
         location,
         price,
+        description,
         image_1,
+        image_2,
+        image_3,
+        image_4,
         updated_at,
         like_id,
         setAdverts,
+        advertPage,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
 
+    // Handle Like functionality
     const handleLike = async () => {
         try {
             const { data } = await axiosRes.post('/likes/', {advert:id});
@@ -43,6 +50,7 @@ const Advert = (props) => {
         }
     };
 
+    // Handle Unlike functionality
     const handleUnlike = async () => {
         try {
             await axiosRes.delete(`/likes/${like_id}/`);
@@ -59,17 +67,39 @@ const Advert = (props) => {
         }
     };
 
+    // Handle main image change
+    const [mainImage, setMainImage] = useState(image_1);
+
+    const changeMainImg = (newImage) => {
+        setMainImage(newImage);
+    };
+
     return (
         <Card className={styles.Advert}>
-            <Card.Body className={styles.CardBody}>
-                <Link to={`/adverts/${id}`}>
-                    <Card.Img src={image_1} alt={title} className={styles.Img} />                
-                </Link>                
-            </Card.Body>
+            {!advertPage && 
+                <Card.Body className={styles.CardBody}>
+                    <Link to={`/adverts/${id}`}>
+                        <Card.Img src={image_1} alt={title} className={styles.Img} />                
+                    </Link>                
+                </Card.Body>
+            }
+            
             <Card.Body>
+                {advertPage && 
+                    <>
+                        <Card.Img src={mainImage} alt={title} className={`${styles.MainImg} ${styles.Img}`} />
+                        <div className={`${appStyles.Content} ${styles.Thumbnails} d-flex justify-content-between`}>
+                            <Card.Img src={image_1} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_1)} />
+                            <Card.Img src={image_2} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_2)} />
+                            <Card.Img src={image_3} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_3)} />
+                            <Card.Img src={image_4} alt={title} className={styles.Thumbnail} onClick={() => changeMainImg(image_4)} />
+                        </div>
+                    </>
+                }
                 {/* Check if these props have been passed before rendering the components */}
                 {title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
                 {price && <Card.Text className="mb-0">£{price}</Card.Text>}
+                {advertPage && description && <Card.Text className='mb-0'>{description}</Card.Text>}
                 {location && <Card.Text className="mb-0">{location}</Card.Text>}
                 Posted {updated_at}
                 

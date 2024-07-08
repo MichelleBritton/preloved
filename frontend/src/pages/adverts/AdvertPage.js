@@ -59,13 +59,15 @@ function AdvertPage() {
     };
 
     if (!advertData) {
-        return <Container className={appStyles.Content}>
-                    <Asset spinner />
-                </Container>
+        return (
+            <Container className={appStyles.Content}>
+                <Asset spinner />
+            </Container>
+        );
     }
 
     return (
-        <Container>
+        <Container fluid className={`${appStyles.Content} custom-container`}>
             <Row>
                 <Col>
                     {/* SetAdverts for likes functionality */}
