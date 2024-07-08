@@ -11,6 +11,14 @@
 }
 .CardBody { 
     padding: 0 !important;
+    position: relative;
+}
+.Category {
+    background: #07161b;
+    color: #cfced3;
+    left: 0;
+    position: absolute;
+    top: 20px;
 }
 .CardTitle {
     font-size: 1.6rem;

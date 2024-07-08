@@ -20,6 +20,7 @@ const Advert = (props) => {
         location,
         price,
         description,
+        category,
         image_1,
         image_2,
         image_3,
@@ -80,7 +81,8 @@ const Advert = (props) => {
                 <Card.Body className={styles.CardBody}>
                     <Link to={`/adverts/${id}`}>
                         <Card.Img src={image_1} alt={title} className={styles.Img} />                
-                    </Link>                
+                    </Link>  
+                    <span className={`${styles.Category} pl-3 pr-5 py-1`}>{category}</span>      
                 </Card.Body>
             }
             
