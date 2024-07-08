@@ -85,6 +85,7 @@ const Advert = (props) => {
             }
             
             <Card.Body>
+                {advertPage && title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
                 {advertPage && 
                     <>
                         <Card.Img src={mainImage} alt={title} className={`${styles.MainImg} ${styles.Img}`} />
@@ -97,11 +98,11 @@ const Advert = (props) => {
                     </>
                 }
                 {/* Check if these props have been passed before rendering the components */}
-                {title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
-                {price && <Card.Text className="mb-0">£{price}</Card.Text>}
-                {advertPage && description && <Card.Text className='mb-0'>{description}</Card.Text>}
-                {location && <Card.Text className="mb-0">{location}</Card.Text>}
-                Posted {updated_at}
+                {!advertPage && title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
+                {advertPage && description && <Card.Text className='mb-0'><strong>Description: </strong>{description}</Card.Text>}
+                {price && <Card.Text className="mb-0"><strong>Price: </strong>£{price}</Card.Text>}
+                {location && <Card.Text className="mb-0"><strong>Location: </strong>{location}</Card.Text>}
+                <strong>Posted: </strong>{updated_at}
                 
                 <div className={styles.PostBar}>
                     {/* Check if current user owns the advert */}
