@@ -1,22 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
+
+import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/AdvertCreateEditForm.module.css";
+import Upload from "../../assets/upload.png";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-import Upload from "../../assets/upload.png";
+
 import Asset from "../../components/Asset";
 import { axiosReq } from "../../api/axiosDefaults";
-import styles from "../../styles/AdvertCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import useSelectOptions from '../../hooks/useSelectOptions';
 
 function AdvertCreateForm() {
     const [errors, setErrors] = useState({});
-    const [categoryOptions, setCategoryOptions] = useState([]);
-    const [deliverOptions, setDeliverOptions] = useState([]);
-    const [locationOptions, setLocationOptions] = useState([]);
+
+    const { categoryOptions, deliverOptions, locationOptions } = useSelectOptions();
 
     const [advertData, setAdvertData] = useState({
         title: "",
@@ -40,55 +43,6 @@ function AdvertCreateForm() {
     const imageRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
     const history = useHistory();
-
-    // GET request for category choices endpoint to populate select field
-    useEffect(() => {
-        let isMounted = true; 
-        const fetchCategoryOptions = async () => {
-            try {
-                const response = await axiosReq.get('adverts/category_choices'); 
-                if (isMounted) setCategoryOptions(response.data);
-            } catch (err) {
-                //console.log(err);
-            }
-        };
-        
-        fetchCategoryOptions();
-        return () => { isMounted = false };
-    }, []);
-
-    // GET request for deliver choices endpoint to populate select field
-    useEffect(() => {
-        let isMounted = true; 
-        const fetchDeliverOptions = async () => {
-            try {
-                const response = await axiosReq.get('adverts/deliver_choices'); 
-                if (isMounted) setDeliverOptions(response.data);
-            } catch (err) {
-                //console.log(err);
-            }
-        };
-        
-        fetchDeliverOptions();
-        return () => { isMounted = false };
-    }, []);
-
-    // GET request for location choices endpoint to populate select field
-    useEffect(() => {
-        let isMounted = true; 
-        const fetchLocationOptions = async () => {
-            try {
-                const response = await axiosReq.get('adverts/location_choices'); 
-                if (isMounted) setLocationOptions(response.data);
-            } catch (err) {
-                //console.log(err);
-            }
-        };
-        
-        fetchLocationOptions();
-        return () => { isMounted = false };
-    }, []);
-
 
     // Handle form changes
     const handleChange = (event) => {
