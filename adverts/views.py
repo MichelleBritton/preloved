@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from preloved.permissions import IsOwnerOrReadOnly
 from .models import Advert
 from .serializers import CategorySerializer, LocationSerializer, DeliverSerializer, AdvertSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import AdvertFilter
 
 
 class AdvertList(generics.ListCreateAPIView):
@@ -15,13 +17,13 @@ class AdvertList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Advert.objects.all()
     filter_backends = [
+        DjangoFilterBackend,
         filters.SearchFilter,
     ]
+    filterset_class = AdvertFilter
     search_fields = [
         "title",
         "description",
-        "location",
-        "category",
     ]
 
     def perform_create(self, serializer):
