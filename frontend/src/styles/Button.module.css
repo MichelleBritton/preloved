@@ -32,11 +32,21 @@
   width: 100%;
 }
 
+.Small {
+  font-size: 0.8rem;
+  padding: 0 5px;
+}
+
 .Blue {
   background: #3f7381;
+  border: 2px solid #3f7381;
   color: #cec7bf;
 }
 
 .Blue:hover {
   background: #07161b;
+}
+
+.Outline:hover {
+  border: 2px solid #cec7bf;
 }
