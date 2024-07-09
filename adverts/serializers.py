@@ -149,3 +149,17 @@ class AdvertSerializer(serializers.ModelSerializer):
             'deliver', 'image_1', 'image_2', 'image_3', 'image_4',
             'is_owner', 'profile_id', 'profile_name', 'profile_image', 'like_id'
         ]
+
+
+class CategorySerializer(serializers.Serializer):
+    value = serializers.CharField()
+    label = serializers.CharField()
+
+
+class LocationSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    label = serializers.CharField()
+
+class DeliverSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    label = serializers.CharField()

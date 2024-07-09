@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -14,6 +14,10 @@ import btnStyles from "../../styles/Button.module.css";
 
 function AdvertCreateForm() {
     const [errors, setErrors] = useState({});
+    const [categoryOptions, setCategoryOptions] = useState([]);
+    const [deliverOptions, setDeliverOptions] = useState([]);
+    const [locationOptions, setLocationOptions] = useState([]);
+
     const [advertData, setAdvertData] = useState({
         title: "",
         description: "",
@@ -36,6 +40,55 @@ function AdvertCreateForm() {
     const imageRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
     const history = useHistory();
+
+    // GET request for category choices endpoint to populate select field
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchCategoryOptions = async () => {
+            try {
+                const response = await axiosReq.get('adverts/category_choices'); 
+                if (isMounted) setCategoryOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchCategoryOptions();
+        return () => { isMounted = false };
+    }, []);
+
+    // GET request for deliver choices endpoint to populate select field
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchDeliverOptions = async () => {
+            try {
+                const response = await axiosReq.get('adverts/deliver_choices'); 
+                if (isMounted) setDeliverOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchDeliverOptions();
+        return () => { isMounted = false };
+    }, []);
+
+    // GET request for location choices endpoint to populate select field
+    useEffect(() => {
+        let isMounted = true; 
+        const fetchLocationOptions = async () => {
+            try {
+                const response = await axiosReq.get('adverts/location_choices'); 
+                if (isMounted) setLocationOptions(response.data);
+            } catch (err) {
+                //console.log(err);
+            }
+        };
+        
+        fetchLocationOptions();
+        return () => { isMounted = false };
+    }, []);
+
 
     // Handle form changes
     const handleChange = (event) => {
@@ -135,11 +188,17 @@ function AdvertCreateForm() {
             <Form.Group controlId="location">
                 <Form.Label>Location *</Form.Label>
                 <Form.Control
-                    type="text"
-                    name="location"
+                    as="select"
                     value={location}
                     onChange={handleChange}
-                />
+                    name="location"
+                >
+                    {locationOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </Form.Control>
             </Form.Group>
             {errors.location?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
@@ -150,11 +209,17 @@ function AdvertCreateForm() {
             <Form.Group controlId="category">
                 <Form.Label>Category *</Form.Label>
                 <Form.Control
-                    type="text"
-                    name="category"
+                    as="select"
                     value={category}
                     onChange={handleChange}
-                />
+                    name="category"
+                >
+                    {categoryOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </Form.Control>
             </Form.Group>
             {errors.category?.map((message, idx) => (
                 <Alert key={idx} variant="warning">
@@ -165,11 +230,17 @@ function AdvertCreateForm() {
             <Form.Group controlId="deliver">
                 <Form.Label>Deliver *</Form.Label>
                 <Form.Control
-                    type="text"
-                    name="deliver"
+                    as="select"
                     value={deliver}
                     onChange={handleChange}
-                />
+                    name="deliver"
+                >
+                    {deliverOptions.map(option => (
+                        <option key={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
+                </Form.Control>               
             </Form.Group>
             {errors.deliver?.map((message, idx) => (
                 <Alert key={idx} variant="warning">

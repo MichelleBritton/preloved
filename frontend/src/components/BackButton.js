@@ -13,7 +13,7 @@ const BackButton = () => {
             className={`${btnStyles.Button} ${btnStyles.Blue} mb-3`}
             onClick={() => history.goBack()}
         >
-            <i class="fa-solid fa-angles-left"></i> <strong>back</strong>
+            <i className="fa-solid fa-angles-left"></i> <strong>back</strong>
         </Button>
     );
 }

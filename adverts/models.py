@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+
 
 class Advert(models.Model):
     """
@@ -19,13 +20,13 @@ class Advert(models.Model):
         upload_to='images/', default='default_post_wndtrr'
     )
     image_2 = models.ImageField(
-        upload_to='images/'
+        upload_to='images/', default='default_post_wndtrr'
     )
     image_3 = models.ImageField(
-        upload_to='images/'
+        upload_to='images/', default='default_post_wndtrr'
     )
     image_4 = models.ImageField(
-        upload_to='images/'
+        upload_to='images/', default='default_post_wndtrr'
     )
 
     class Meta:

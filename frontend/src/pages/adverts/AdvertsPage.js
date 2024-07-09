@@ -21,22 +21,18 @@ function AdvertsPage({ message }) {
     const [hasLoaded, setHasLoaded] = useState(false);
     // Detect any url change
     const { pathname } = useLocation();
-    const [queryKey, setQueryKey] = useState("");
-    const [queryCat, setQueryCat] = useState("");
-    const [queryLoc, setQueryLoc] = useState("");
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         const fetchAdverts = async () => {
             try {
-                const queryString = `?search=${queryKey}&category=${queryCat}&location=${queryLoc}`;
-                const { data } = await axiosReq.get(`/adverts/${queryString}`);
+                const { data } = await axiosReq.get(`/adverts/?search=${query}`);
                 setAdverts(data);
                 setHasLoaded(true);
             } catch(err) {
                 //console.log(err);
             }
         }
-
         setHasLoaded(false);
         
         const timer = setTimeout(() => {
@@ -46,7 +42,7 @@ function AdvertsPage({ message }) {
             clearTimeout(timer);
         };
 
-    }, [queryKey, queryCat, queryLoc, pathname]);
+    }, [query, pathname]);
   
     return (
         <>
@@ -60,8 +56,8 @@ function AdvertsPage({ message }) {
                             onSubmit={(event) => event.preventDefault()}
                         >
                             <Form.Control 
-                                value={queryKey} 
-                                onChange={(event) => setQueryKey(event.target.value)} 
+                                value={query} 
+                                onChange={(event) => setQuery(event.target.value)} 
                                 type="text" 
                                 className="mr-sm-2" 
                                 placeholder="What are you looking for?"
@@ -70,7 +66,7 @@ function AdvertsPage({ message }) {
                         </Form>    
                     </Col>
 
-                    <Col className={appStyles.ContentDark}>
+                    {/* <Col className={appStyles.ContentDark}>
                         <h2>Search by category</h2>
                         <i className={`fas fa-search ${styles.SearchIcon}`} />
                         <Form 
@@ -86,9 +82,9 @@ function AdvertsPage({ message }) {
                                 aria-label="Search" 
                             />
                         </Form>    
-                    </Col>
+                    </Col> */}
 
-                    <Col className={appStyles.ContentDark}>
+                    {/* <Col className={appStyles.ContentDark}>
                         <h2>Search by location</h2>
                         <i className={`fas fa-search ${styles.SearchIcon}`} />
                         <Form 
@@ -104,7 +100,7 @@ function AdvertsPage({ message }) {
                                 aria-label="Search" 
                             />
                         </Form>    
-                    </Col>
+                    </Col> */}
                 </Row>                
             </Container>
 
