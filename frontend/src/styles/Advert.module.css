@@ -30,6 +30,7 @@
 .MainImg {
     border: 2px solid #07161b;
     height: auto;
+    object-fit: contain;
     width: 100%;
 }
 .Thumbnails {
@@ -37,8 +38,9 @@
     border-radius: 0 0 20px 20px;
 }
 .Thumbnail {
+    aspect-ratio: 1;
     border: 2px solid #07161b;
     height: auto;
-    object-fit: cover;
+    object-fit: cover; 
     width: 24%;
 }

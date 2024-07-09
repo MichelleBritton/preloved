@@ -193,6 +193,7 @@ function AdvertCreateForm() {
                     onChange={handleChange}
                     name="location"
                 >
+                    <option>Please select</option>
                     {locationOptions.map(option => (
                         <option key={option.value}>
                             {option.label}
@@ -214,6 +215,7 @@ function AdvertCreateForm() {
                     onChange={handleChange}
                     name="category"
                 >
+                    <option>Please select</option>
                     {categoryOptions.map(option => (
                         <option key={option.value}>
                             {option.label}
@@ -235,6 +237,7 @@ function AdvertCreateForm() {
                     onChange={handleChange}
                     name="deliver"
                 >
+                    <option>Please select</option>
                     {deliverOptions.map(option => (
                         <option key={option.value}>
                             {option.label}
