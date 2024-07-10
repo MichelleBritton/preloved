@@ -1,37 +1,57 @@
 .Card {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 @media only screen and (min-width:1800px) {	
-  .Card {
-    flex-basis: 25%;
-  }
+    .Card {
+        flex-basis: 25%;
+    }
 }
 
 .Card img {
-  height: 300px;
-  object-fit: cover;
-  width: 100%;
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.AccordionCard {
+    background: #07161b;
+    border: 2px solid #cec7bf;
+    border-radius: 20px;
+}
+
+.AccordionCard:not(:last-of-type) {
+    border-bottom: 2px solid #cec7bf;
+    border-radius: 20px;
+}
+
+.CardHeader button {
+    color: #cec7bf;
+    font: normal 1.4rem "Delius Swash Caps", cursive;  
+}
+
+.CardHeader button:hover {
+    color: #3f7381;
 }
 
 .SearchBar input {
-  border-radius: 10px;
-  color: #242a3d;
-  padding-left: 40px;
+    border-radius: 10px;
+    color: #242a3d;
+    padding-left: 40px;
 }
 
 .SearchBar select {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .SearchIcon {
-  position: absolute;
-  font-size: 1.2rem;
-  padding: 9px;
-  padding-left: 15px;
+    position: absolute;
+    font-size: 1.2rem;
+    padding: 9px;
+    padding-left: 15px;
 }
 
 .SearchIcon:hover {
-  cursor: default;
-  color: #cfced3;
+    cursor: default;
+    color: #cfced3;
 }

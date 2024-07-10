@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions, filters
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.decorators import permission_classes
 from preloved.permissions import IsOwnerOrReadOnly
 from .models import Advert
 from .serializers import CategorySerializer, LocationSerializer, DeliverSerializer, AdvertSerializer
@@ -41,6 +42,7 @@ class AdvertDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 @api_view(["GET"])
+@permission_classes([permissions.AllowAny])
 def category_choices(request):
     choices = [
         {"value": "leads", "label": "Leads"},
@@ -68,6 +70,7 @@ def category_choices(request):
 
 
 @api_view(["GET"])
+@permission_classes([permissions.AllowAny])
 def location_choices(request):
     choices = [
         {"value": "aberdeen", "label": "Aberdeen"},
@@ -334,6 +337,7 @@ def location_choices(request):
     return Response(serializer.data)
 
 @api_view(["GET"])
+@permission_classes([permissions.AllowAny])
 def deliver_choices(request):
     choices = [
         {"value": "collection_only", "label": "Collection Only"},

@@ -49,6 +49,11 @@
     font: normal 2rem "Delius Swash Caps", cursive;  
 }
 
+.ContentDark h3 {
+    color: #cec7bf;
+    font: normal 1.4rem "Delius Swash Caps", cursive;  
+}
+
 * {
     box-sizing: border-box;
 }
