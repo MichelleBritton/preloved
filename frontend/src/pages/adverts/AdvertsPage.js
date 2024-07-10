@@ -297,7 +297,7 @@ function AdvertsPage({ message }) {
                                 loader={<Asset spinner />}
                                 hasMore={!!adverts.next}
                                 next={() => {fetchMoreData(adverts, setAdverts)}}    
-                                className={"d-flex flex-row flex-wrap justify-content-between"}                            
+                                className={"d-flex flex-row flex-wrap"}                            
                             />
                         ) : (
                             <Container className={appStyles.Content}>
