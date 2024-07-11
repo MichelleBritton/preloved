@@ -10,6 +10,7 @@ import AdvertCreateForm from "./pages/adverts/AdvertCreateForm";
 import AdvertPage from "./pages/adverts/AdvertPage";
 import AdvertsPage from "./pages/adverts/AdvertsPage";
 import AdvertEditForm from "./pages/adverts/AdvertEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {  
   return (
@@ -27,6 +28,11 @@ function App() {
           />
           <Route 
             exact 
+            path="/adverts/:id" 
+            render={() => <AdvertPage />} 
+          />
+          <Route 
+            exact 
             path="/adverts/create" 
             render={() => <AdvertCreateForm />} 
           />
@@ -37,6 +43,11 @@ function App() {
           />
           <Route 
             exact 
+            path="/profiles/:id" 
+            render ={() => <ProfilePage />} 
+          />
+          <Route 
+            exact 
             path="/signup" 
             render={() => <SignUpForm />} 
           />
@@ -44,12 +55,7 @@ function App() {
             exact 
             path="/login" 
             render={() => <LoginForm />} 
-          />
-          <Route 
-            exact 
-            path="/adverts/:id" 
-            render={() => <AdvertPage />} 
-          />
+          />          
           <Route render={()=> <p>Page not found</p>} />
         </Switch>
       </Container>
