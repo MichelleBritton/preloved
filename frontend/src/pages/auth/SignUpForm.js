@@ -16,12 +16,14 @@ const SignUpForm = () => {
     useRedirect('loggedIn');
 
     const [signUpData, setSignUpData] = useState({
+        first_name: '',
+        last_name: '',
         username: '',
         password1: '',
         password2: '',
     })
 
-    const { username, password1, password2 } = signUpData;
+    const { first_name, last_name, username, password1, password2 } = signUpData;
     const [errors, setErrors] = useState({});
     const history = useHistory();
 
@@ -49,6 +51,36 @@ const SignUpForm = () => {
                     <h1 className={styles.Header}>Sign up</h1>
 
                     <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="first_name">
+                            <Form.Label className="d-none">First Name</Form.Label>
+                            <Form.Control 
+                                className={styles.Input} 
+                                type="text" 
+                                placeholder="first name" 
+                                name="first_name" 
+                                value={first_name} 
+                                onChange={handleChange}
+                            />
+                        </Form.Group>           
+                        {errors.first_name?.map((message, idx) =>
+                            <Alert variant="warning" key={idx}>{message}</Alert>
+                        )}
+
+                        <Form.Group controlId="last_name">
+                            <Form.Label className="d-none">Last Name</Form.Label>
+                            <Form.Control 
+                                className={styles.Input} 
+                                type="text" 
+                                placeholder="last name" 
+                                name="last_name" 
+                                value={last_name} 
+                                onChange={handleChange}
+                            />
+                        </Form.Group>           
+                        {errors.last_name?.map((message, idx) =>
+                            <Alert variant="warning" key={idx}>{message}</Alert>
+                        )}
+
                         <Form.Group controlId="username">
                             <Form.Label className="d-none">username</Form.Label>
                             <Form.Control 
